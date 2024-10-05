@@ -172,6 +172,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
+      triggers = { '<leader>', '<localleader>' },
       icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
@@ -515,6 +516,16 @@ require('lazy').setup({
         -- ts_ls = {},
         --
 
+        angularls = {
+          cmd = { 'ngserver', '--stdio', '--tsProbeLocations', 'node_modules', '--ngProbeLocations', 'node_modules' },
+          filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx' },
+          root_dir = require('lspconfig.util').root_pattern('angular.json', 'tsconfig.json', 'tsconfig.lib.json', '.git'),
+          on_new_config = function(new_config, new_root_dir)
+            new_config.cmd = { 'ngserver', '--stdio', '--tsProbeLocations', 'node_modules', '--ngProbeLocations', 'node_modules' }
+          end,
+        },
+        -- html = {},
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -642,6 +653,9 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
     },
     config = function()
       -- See `:help cmp`
@@ -859,7 +873,5 @@ require('lazy').setup({
   },
 })
 
--- vim.cmd ':Neotree'
-require('lspconfig').angularls.setup {}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

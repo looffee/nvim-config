@@ -16,12 +16,41 @@ return {
     },
   },
   -- { 'nvim-treesitter/nvim-treesitter-angular' },
-  { 'github/copilot.vim' },
-  { 'neoclide/coc.nvim' },
+  {
+    'github/copilot.vim',
+    config = function() end,
+  },
+  -- { 'neoclide/coc.nvim', opts = { branch = 'release' } },
+  -- { 'neoclide/coc-tsserver' },
+  -- { 'neoclide/coc-json' },
+  -- { 'neoclide/coc-html' },
+  -- { 'neoclide/coc-css' },
+  -- { 'neoclide/coc-emmet' },
+  -- { 'neoclide/coc-yaml' },
+  -- { 'neoclide/coc-python' },
+  -- { 'neoclide/coc-rls' },
+  -- { 'neoclide/coc-snippets' },
+  -- { 'iamcco/coc-angular' },
+  -- { 'neoclide/coc-tailwindcss' },
+  -- { 'neoclide/coc-vetur' },
   {
     'olrtg/nvim-emmet',
     config = function()
       vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
     end,
+  },
+  {
+    'kylechui/nvim-surround',
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 }
