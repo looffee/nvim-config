@@ -90,7 +90,7 @@ keymap('n', '<leader>wq', '<C-w>q', { desc = 'Quit', silent = true, noremap = tr
 -- CTRL+s to save file
 keymap('n', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
 keymap('x', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
-keymap('i', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
+keymap('i', '<C-s>', '<Esc>:w<CR>', { desc = 'Save File', silent = true, noremap = true })
 keymap('s', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
 
 keymap('n', '<leader>cl', ':LspInfo<CR>', vim.tbl_extend('force', opts, { desc = 'Show LSP Info' }))
