@@ -3,6 +3,9 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+
+  require 'custom/plugins/telescope',
+  require 'custom/plugins/which-keys',
   {
     'rmagatti/auto-session',
     lazy = false,
@@ -36,7 +39,7 @@ return {
   {
     'olrtg/nvim-emmet',
     config = function()
-      vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
+      -- vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
     end,
   },
   {

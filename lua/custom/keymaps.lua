@@ -74,22 +74,24 @@ keymap('n', '<Space>e', ':Neotree source=filesystem reveal=true position=left to
 keymap('n', '<Space>be', ':Neotree source=buffers reveal=true position=left toggle<CR>', { desc = 'Explore', silent = true })
 
 -- Space + Q + Q to quit Neovim completely
-keymap('n', '<Space>qq', ':qa!<CR>', opts)
+keymap('n', '<Space>qq', ':qa!<CR>', { silent = true, noremap = true })
 
--- CTRL+w + Left Arrow to move to the left window
-keymap('n', '<leader>w<Left>', '<C-w>h', opts)
+-- Change window focus
+keymap('n', '<leader>w<Left>', '<C-w>h', { silent = true, noremap = true, desc = 'Focus Left' })
+keymap('n', '<leader>w<Down>', '<C-w>j', { silent = true, noremap = true, desc = 'Focus Down' })
+keymap('n', '<leader>w<Up>', '<C-w>k', { silent = true, noremap = true, desc = 'Focus Up' })
+keymap('n', '<leader>w<Right>', '<C-w>l', { silent = true, noremap = true, desc = 'Focus Right' })
 
--- CTRL+w + Down Arrow to move to the window below
-keymap('n', '<leader><Down>', '<C-w>j', opts)
-
--- CTRL+w + Up Arrow to move to the window above
-keymap('n', '<leader><Up>', '<C-w>k', opts)
-
--- CTRL+w + Right Arrow to move to the right window
-keymap('n', '<leader>w<Right>', '<C-w>l', opts)
+-- Split window keymaps
+keymap('n', '<leader>wv', '<C-w>v', { desc = 'Vertical Split', silent = true, noremap = true })
+keymap('n', '<leader>wh', '<C-w>s', { desc = 'Horizontal Split', silent = true, noremap = true })
+keymap('n', '<leader>wq', '<C-w>q', { desc = 'Quit', silent = true, noremap = true })
 
 -- CTRL+s to save file
-keymap('n', '<C-s>', ':w<CR>', opts)
+keymap('n', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
+keymap('x', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
+keymap('i', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
+keymap('s', '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
 
 keymap('n', '<leader>cl', ':LspInfo<CR>', vim.tbl_extend('force', opts, { desc = 'Show LSP Info' }))
 
