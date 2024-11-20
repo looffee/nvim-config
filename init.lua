@@ -365,6 +365,11 @@ require('lazy').setup({
             new_config.cmd = { 'ngserver', '--stdio', '--tsProbeLocations', 'node_modules', '--ngProbeLocations', 'node_modules' }
           end,
         },
+        -- tailwindcss = {
+        --   cmd = { 'tailwindcss-language-server', '--stdio' },
+        --   filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        --   root_dir = require('lspconfig.util').root_pattern('tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.ts'),
+        -- },
         -- html = {},
 
         lua_ls = {
@@ -455,6 +460,9 @@ require('lazy').setup({
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         html = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+        scss = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },

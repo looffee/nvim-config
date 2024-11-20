@@ -119,6 +119,16 @@ return {
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          -- Configure path_display to show the full path and parent folder
+          path_display = { "truncate" },
+        },
+        pickers = {
+          buffers = {
+            -- Customize the buffer picker to show full path and parent folder
+            path_display = { "truncate" },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
