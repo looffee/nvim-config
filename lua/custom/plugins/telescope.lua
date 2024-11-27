@@ -120,14 +120,43 @@ return {
         -- },
         -- pickers = {}
         defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+          },
           -- Configure path_display to show the full path and parent folder
-          path_display = { "truncate" },
+          path_display = { shorten = 4 },
+          mappings = {
+            i = {
+              ['<C-Down>'] = require('telescope.actions').cycle_history_next,
+              ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
+            },
+          },
+          -- layout_config = {
+          --   horizontal = {
+          --     preview_width = 0, -- Disable preview by setting width to 0
+          --   },
+          -- },
+          -- preview = false, -- Disable file content preview
+          layout_strategy = 'horizontal',
+          layout_config = {
+            horizontal = {
+              width = 0.90,
+              height = 0.95,
+              preview_width = 0.3,
+            },
+          },
         },
         pickers = {
-          buffers = {
-            -- Customize the buffer picker to show full path and parent folder
-            path_display = { "truncate" },
+          lsp_references = {
+            show_line = false,
           },
+          live_grep = {},
         },
         extensions = {
           ['ui-select'] = {
@@ -154,6 +183,12 @@ return {
       vim.keymap.set('n', '<leader>fm', ':Telescope marks<CR>', { desc = 'Jump to Mark' })
       vim.keymap.set('n', '<leader>fo', ':Telescope vim_options<CR>', { desc = 'Options' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Fearch Diagnostics' })
+
+      -- vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, { desc = 'Goto Definition' })
+      -- vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { desc = 'Goto References' })
+      -- vim.keymap.set('n', '<leader>cs', builtin.lsp_document_symbols, { desc = 'Buffer Symbols' })
+      -- vim.keymap.set('n', '<leader>cS', builtin.lsp_workspace_symbols, { desc = 'All Symbols' })
+
       -- vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       -- vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       -- vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
